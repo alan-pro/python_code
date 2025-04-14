@@ -1,1 +1,1 @@
-# python_code
+# 本项目内容主要是学习python开发的相关代码

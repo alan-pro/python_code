@@ -9,12 +9,15 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+# _file_指settings文件所在位置
+# resolve()绝对路径
+# 所在上级目录
+# 即django_project
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -24,8 +27,10 @@ SECRET_KEY = 'django-insecure-kc+l9ac&r8vf6-q=oz9ueo#p@m2@*agy!q@_0r6nin&61+3wc7
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# 开发时选择True，可以看到更多信息；上线后，选择False
 
-ALLOWED_HOSTS = []
+# 允许以什么样的形式访问我们的项目，默认127.0.0.1
+ALLOWED_HOSTS = ['*']  # 既可以是ip地址，也可以时127.0.0.1
 
 
 # Application definition
@@ -55,7 +60,8 @@ ROOT_URLCONF = 'django_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 告知系统我们的模板位置
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -107,7 +113,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # 设置语言
 LANGUAGE_CODE = 'zh-Hans'  # 'en-us'
 # 设置时区
-TIME_ZONE = 'Asia/Beijing'  # 'UTC'
+TIME_ZONE = 'Asia/Shanghai'  # 'UTC'
 
 USE_I18N = True
 
